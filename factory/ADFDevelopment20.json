@@ -1,0 +1,9 @@
+{
+	"name": "ADFDevelopment20",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "1b9af130-5f46-4dc6-97c0-76efe596e173",
+		"tenantId": "60367695-0e8c-4bd0-a785-e8bbd7a78e0a"
+	}
+}
