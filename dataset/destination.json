@@ -10,6 +10,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"folderPath": {
+					"value": "string(getdate())",
+					"type": "Expression"
+				},
 				"container": "inputdata"
 			},
 			"compressionCodec": "none"
