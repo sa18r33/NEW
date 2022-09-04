@@ -10,10 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"folderPath": {
-					"value": "output\n",
-					"type": "Expression"
-				},
 				"container": "crypto"
 			},
 			"compressionCodec": "gzip"
