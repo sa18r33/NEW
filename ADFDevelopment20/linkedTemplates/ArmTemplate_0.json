@@ -72,7 +72,6 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
-						"fileName": "*",
 						"fileSystem": "crypto"
 					}
 				},
@@ -96,11 +95,9 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": "output",
-						"folderPath": "output",
 						"container": "inputdata"
 					},
-					"compressionCodec": "snappy"
+					"compressionCodec": "none"
 				},
 				"schema": []
 			},
@@ -132,7 +129,9 @@
 								"storeSettings": {
 									"type": "AzureBlobFSReadSettings",
 									"recursive": true,
-									"enablePartitionDiscovery": false
+									"wildcardFolderPath": "*",
+									"wildcardFileName": "*",
+									"enablePartitionDiscovery": true
 								},
 								"formatSettings": {
 									"type": "JsonReadSettings"
@@ -141,7 +140,8 @@
 							"sink": {
 								"type": "ParquetSink",
 								"storeSettings": {
-									"type": "AzureBlobStorageWriteSettings"
+									"type": "AzureBlobStorageWriteSettings",
+									"copyBehavior": "MergeFiles"
 								},
 								"formatSettings": {
 									"type": "ParquetWriteSettings"
