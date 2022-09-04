@@ -1,0 +1,21 @@
+{
+	"name": "destination",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "output",
+				"folderPath": "output",
+				"container": "inputdata"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
