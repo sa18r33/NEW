@@ -11,12 +11,12 @@
 			"location": {
 				"type": "AzureBlobStorageLocation",
 				"folderPath": {
-					"value": "string(getdate())",
+					"value": "output\n",
 					"type": "Expression"
 				},
-				"container": "inputdata"
+				"container": "crypto"
 			},
-			"compressionCodec": "none"
+			"compressionCodec": "gzip"
 		},
 		"schema": []
 	}
