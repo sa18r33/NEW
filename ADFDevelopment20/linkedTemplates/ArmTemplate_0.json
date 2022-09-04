@@ -72,8 +72,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
-						"fileName": "cryptoprices.csv",
-						"fileSystem": "crypto"
+						"fileSystem": "inputdata"
 					}
 				},
 				"schema": {}
@@ -96,9 +95,9 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"container": "inputdata"
+						"container": "crypto"
 					},
-					"compressionCodec": "none"
+					"compressionCodec": "gzip"
 				},
 				"schema": []
 			},
@@ -129,7 +128,7 @@
 								"type": "JsonSource",
 								"storeSettings": {
 									"type": "AzureBlobFSReadSettings",
-									"recursive": true,
+									"recursive": false,
 									"wildcardFolderPath": "*",
 									"wildcardFileName": "*",
 									"enablePartitionDiscovery": true
@@ -141,14 +140,26 @@
 							"sink": {
 								"type": "ParquetSink",
 								"storeSettings": {
-									"type": "AzureBlobStorageWriteSettings",
-									"copyBehavior": "MergeFiles"
+									"type": "AzureBlobStorageWriteSettings"
 								},
 								"formatSettings": {
 									"type": "ParquetWriteSettings"
 								}
 							},
-							"enableStaging": false
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"path": "$"
+										},
+										"sink": {
+											"name": "schema"
+										}
+									}
+								]
+							}
 						},
 						"inputs": [
 							{
