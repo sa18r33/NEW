@@ -19,7 +19,9 @@
 						"type": "JsonSource",
 						"storeSettings": {
 							"type": "AzureBlobFSReadSettings",
-							"fileListPath": "crypto",
+							"recursive": true,
+							"wildcardFolderPath": "*",
+							"wildcardFileName": "*",
 							"enablePartitionDiscovery": true
 						},
 						"formatSettings": {
