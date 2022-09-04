@@ -97,7 +97,7 @@
 						"type": "AzureBlobStorageLocation",
 						"container": "crypto"
 					},
-					"compressionCodec": "gzip"
+					"compressionCodec": "none"
 				},
 				"schema": []
 			},
@@ -129,7 +129,6 @@
 								"storeSettings": {
 									"type": "AzureBlobFSReadSettings",
 									"recursive": false,
-									"wildcardFolderPath": "*",
 									"wildcardFileName": "*",
 									"enablePartitionDiscovery": true
 								},
