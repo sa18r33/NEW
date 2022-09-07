@@ -20,7 +20,12 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": [],
+				"userProperties": [
+					{
+						"name": "filename",
+						"value": "@split(split(activity('Get Metadata1').output.itemName,'_')[1],'.')[0])"
+					}
+				],
 				"typeProperties": {
 					"source": {
 						"type": "DelimitedTextSource",
@@ -72,10 +77,7 @@
 						"referenceName": "AzureSqlTable3",
 						"type": "DatasetReference",
 						"parameters": {
-							"tbname": {
-								"value": "@activity('Get Metadata1').output.itemName",
-								"type": "Expression"
-							}
+							"tbname": "@filename"
 						}
 					}
 				]
@@ -98,7 +100,8 @@
 						"type": "DatasetReference"
 					},
 					"fieldList": [
-						"itemName"
+						"itemName",
+						"itemType"
 					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
