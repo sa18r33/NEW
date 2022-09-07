@@ -1,0 +1,64 @@
+{
+	"name": "DelimitedText1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "cryptoprices.csv",
+				"fileSystem": "newcontainer"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Prop_0",
+				"type": "String"
+			},
+			{
+				"name": "Date",
+				"type": "String"
+			},
+			{
+				"name": "Adj Close (BNB)",
+				"type": "String"
+			},
+			{
+				"name": "Volume (BNB)",
+				"type": "String"
+			},
+			{
+				"name": "Adj Close (BTC)",
+				"type": "String"
+			},
+			{
+				"name": "Volume (BTC)",
+				"type": "String"
+			},
+			{
+				"name": "Adj Close (USDT)",
+				"type": "String"
+			},
+			{
+				"name": "Volume (USDT)",
+				"type": "String"
+			},
+			{
+				"name": "Adj Close (ETH)",
+				"type": "String"
+			},
+			{
+				"name": "Volume (ETH)",
+				"type": "String"
+			}
+		]
+	}
+}
