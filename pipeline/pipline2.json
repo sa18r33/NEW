@@ -21,6 +21,7 @@
 							"type": "AzureBlobFSReadSettings",
 							"maxConcurrentConnections": 3,
 							"recursive": false,
+							"wildcardFileName": "*",
 							"enablePartitionDiscovery": true
 						},
 						"formatSettings": {
