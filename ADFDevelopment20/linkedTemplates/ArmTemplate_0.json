@@ -325,15 +325,6 @@
 						"typeProperties": {
 							"source": {
 								"type": "DelimitedTextSource",
-								"additionalColumns": [
-									{
-										"name": "piplineid",
-										"value": {
-											"value": "@pipeline().RunId",
-											"type": "Expression"
-										}
-									}
-								],
 								"storeSettings": {
 									"type": "AzureBlobFSReadSettings",
 									"maxConcurrentConnections": 0,
@@ -346,7 +337,7 @@
 							},
 							"sink": {
 								"type": "AzureSqlSink",
-								"preCopyScript": "create table precopytb(id int,name varchar2(800))",
+								"preCopyScript": "create table precopytb(id int,name int)",
 								"writeBehavior": "insert",
 								"sqlWriterUseTableLock": true,
 								"tableOption": "autoCreate",
