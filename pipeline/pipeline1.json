@@ -38,7 +38,7 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"preCopyScript": "create table precopytb(id int,name varchar2(800))",
+						"preCopyScript": "create table precopytb(id int,name int)",
 						"writeBehavior": "insert",
 						"sqlWriterUseTableLock": true,
 						"tableOption": "autoCreate",
