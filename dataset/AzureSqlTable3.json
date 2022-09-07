@@ -5,8 +5,20 @@
 			"referenceName": "AzureSqlDatabase3",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"tbname": {
+				"type": "String",
+				"defaultValue": "non"
+			}
+		},
 		"annotations": [],
 		"type": "AzureSqlTable",
-		"schema": []
+		"schema": [],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().tbname",
+				"type": "Expression"
+			}
+		}
 	}
 }
