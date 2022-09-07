@@ -10,7 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "overseas-trade-indexes-June-2022-quarter-provisional-csv.csv",
 				"fileSystem": "newcontainer"
 			},
 			"columnDelimiter": ",",
