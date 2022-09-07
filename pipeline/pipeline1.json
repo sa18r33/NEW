@@ -45,17 +45,7 @@
 						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
-					"parallelCopies": 1,
-					"translator": {
-						"type": "TabularTranslator",
-						"mappings": [
-							{
-								"sink": {
-									"path": "$['Column_1']"
-								}
-							}
-						]
-					}
+					"parallelCopies": 1
 				},
 				"inputs": [
 					{
