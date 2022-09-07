@@ -72,6 +72,10 @@
 									{
 										"name": "datenow",
 										"value": "getdate()"
+									},
+									{
+										"name": "filename",
+										"value": "$$FILEPATH"
 									}
 								],
 								"storeSettings": {
@@ -106,7 +110,7 @@
 								"referenceName": "AzureSqlTable3",
 								"type": "DatasetReference",
 								"parameters": {
-									"tbname": "non"
+									"tbname": "$$filepath"
 								}
 							}
 						]
