@@ -118,7 +118,7 @@
 								"type": "DatasetReference",
 								"parameters": {
 									"tbname": {
-										"value": "@pipeline().parameters.filename",
+										"value": "@activity('Get Metadata1').output.itemName",
 										"type": "Expression"
 									}
 								}
