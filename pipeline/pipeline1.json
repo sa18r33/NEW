@@ -88,7 +88,7 @@
 									"storeSettings": {
 										"type": "AzureBlobFSReadSettings",
 										"maxConcurrentConnections": 0,
-										"recursive": false,
+										"fileListPath": "newcontainer/international-trade-june-2022-quarter-csv.zip",
 										"enablePartitionDiscovery": false
 									},
 									"formatSettings": {
