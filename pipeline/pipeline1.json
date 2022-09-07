@@ -59,7 +59,10 @@
 				"outputs": [
 					{
 						"referenceName": "AzureSqlTable3",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"tbname": "$$filenmae"
+						}
 					}
 				]
 			}
