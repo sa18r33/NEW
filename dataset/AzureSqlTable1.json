@@ -40,6 +40,9 @@
 				"precision": 18,
 				"scale": 0
 			}
-		]
+		],
+		"typeProperties": {
+			"schema": ""
+		}
 	}
 }
