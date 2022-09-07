@@ -87,13 +87,14 @@
 									],
 									"storeSettings": {
 										"type": "AzureBlobFSReadSettings",
-										"maxConcurrentConnections": 0,
+										"maxConcurrentConnections": 2,
 										"recursive": true,
 										"wildcardFileName": {
 											"value": "@item().name",
 											"type": "Expression"
 										},
-										"enablePartitionDiscovery": false
+										"enablePartitionDiscovery": true,
+										"partitionRootPath": "crypto"
 									},
 									"formatSettings": {
 										"type": "DelimitedTextReadSettings"
@@ -101,13 +102,36 @@
 								},
 								"sink": {
 									"type": "AzureSqlSink",
+									"writeBatchSize": 4,
+									"maxConcurrentConnections": 2,
 									"writeBehavior": "insert",
 									"sqlWriterUseTableLock": true,
 									"tableOption": "autoCreate",
-									"disableMetricsCollection": false
+									"disableMetricsCollection": true
 								},
-								"enableStaging": false,
-								"parallelCopies": 1
+								"enableStaging": true,
+								"stagingSettings": {
+									"linkedServiceName": {
+										"referenceName": "linkedService1_staging",
+										"type": "LinkedServiceReference"
+									},
+									"path": "crypto"
+								},
+								"parallelCopies": 1,
+								"logSettings": {
+									"enableCopyActivityLog": true,
+									"copyActivityLogSettings": {
+										"logLevel": "Info",
+										"enableReliableLogging": false
+									},
+									"logLocationSettings": {
+										"linkedServiceName": {
+											"referenceName": "AzureDataLakeStorage1",
+											"type": "LinkedServiceReference"
+										},
+										"path": "newcontainer"
+									}
+								}
 							},
 							"inputs": [
 								{
