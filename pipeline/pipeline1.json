@@ -117,7 +117,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"tbname": {
-											"value": "@item()",
+											"value": "@item().name",
 											"type": "Expression"
 										}
 									}
