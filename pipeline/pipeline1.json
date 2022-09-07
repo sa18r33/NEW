@@ -88,11 +88,18 @@
 									"storeSettings": {
 										"type": "AzureBlobFSReadSettings",
 										"maxConcurrentConnections": 0,
-										"fileListPath": "newcontainer/international-trade-june-2022-quarter-csv.zip",
+										"recursive": false,
+										"wildcardFileName": {
+											"value": "@item().name",
+											"type": "Expression"
+										},
 										"enablePartitionDiscovery": false
 									},
 									"formatSettings": {
-										"type": "DelimitedTextReadSettings"
+										"type": "DelimitedTextReadSettings",
+										"compressionProperties": {
+											"type": "ZipDeflateReadSettings"
+										}
 									}
 								},
 								"sink": {
