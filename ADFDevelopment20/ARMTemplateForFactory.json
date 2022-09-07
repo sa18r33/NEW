@@ -64,12 +64,7 @@
 							"secureOutput": false,
 							"secureInput": false
 						},
-						"userProperties": [
-							{
-								"name": "filename",
-								"value": "@split(split(activity('Get Metadata1').output.itemName,'_')[1],'.')[0])"
-							}
-						],
+						"userProperties": [],
 						"typeProperties": {
 							"source": {
 								"type": "DelimitedTextSource",
@@ -121,7 +116,12 @@
 							{
 								"referenceName": "AzureSqlTable3",
 								"type": "DatasetReference",
-								"parameters": {}
+								"parameters": {
+									"tbname": {
+										"value": "@pipeline().parameters.filename",
+										"type": "Expression"
+									}
+								}
 							}
 						]
 					},
@@ -161,6 +161,12 @@
 				"policy": {
 					"elapsedTimeMetric": {},
 					"cancelAfter": {}
+				},
+				"parameters": {
+					"filename": {
+						"type": "String",
+						"defaultValue": "@split(split(activity('Get Metadata1').output.itemName,'_')[1],'.')[0])"
+					}
 				},
 				"annotations": []
 			},
