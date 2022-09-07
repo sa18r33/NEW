@@ -15,7 +15,7 @@
 			},
 			"columnDelimiter": ",",
 			"compressionCodec": "ZipDeflate",
-			"compressionLevel": "Optimal",
+			"compressionLevel": "Fastest",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"nullValue": {
