@@ -29,7 +29,8 @@
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
-						"type": "DelimitedTextReadSettings"
+						"type": "DelimitedTextReadSettings",
+						"skipLineCount": 0
 					}
 				}
 			},
@@ -95,7 +96,10 @@
 										"enablePartitionDiscovery": false
 									},
 									"formatSettings": {
-										"type": "DelimitedTextReadSettings"
+										"type": "DelimitedTextReadSettings",
+										"compressionProperties": {
+											"type": "ZipDeflateReadSettings"
+										}
 									}
 								},
 								"sink": {

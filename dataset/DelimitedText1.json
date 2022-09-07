@@ -10,9 +10,11 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": "international-trade-june-2022-quarter-csv.zip",
 				"fileSystem": "newcontainer"
 			},
 			"columnDelimiter": ",",
+			"compressionCodec": "ZipDeflate",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
