@@ -1,0 +1,8 @@
+{
+	"name": "asqlsb",
+	"properties": {
+		"type": "AzureSqlDatabase",
+		"description": "azureadmin",
+		"annotations": []
+	}
+}
