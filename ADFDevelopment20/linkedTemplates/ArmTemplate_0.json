@@ -27,6 +27,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase3'"
 		},
+		"linkedService1_staging_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'linkedService1_staging'"
+		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://stagelevel.dfs.core.windows.net/"
@@ -124,6 +128,19 @@
 				"type": "AzureSqlDatabase",
 				"typeProperties": {
 					"connectionString": "[parameters('AzureSqlDatabase3_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/linkedService1_staging')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('linkedService1_staging_connectionString')]"
 				}
 			},
 			"dependsOn": []
@@ -527,13 +544,14 @@
 											],
 											"storeSettings": {
 												"type": "AzureBlobFSReadSettings",
-												"maxConcurrentConnections": 0,
-												"recursive": false,
+												"maxConcurrentConnections": 2,
+												"recursive": true,
 												"wildcardFileName": {
 													"value": "@item().name",
 													"type": "Expression"
 												},
-												"enablePartitionDiscovery": false
+												"enablePartitionDiscovery": true,
+												"partitionRootPath": "crypto"
 											},
 											"formatSettings": {
 												"type": "DelimitedTextReadSettings"
@@ -541,13 +559,36 @@
 										},
 										"sink": {
 											"type": "AzureSqlSink",
+											"writeBatchSize": 4,
+											"maxConcurrentConnections": 2,
 											"writeBehavior": "insert",
 											"sqlWriterUseTableLock": true,
 											"tableOption": "autoCreate",
-											"disableMetricsCollection": false
+											"disableMetricsCollection": true
 										},
-										"enableStaging": false,
-										"parallelCopies": 1
+										"enableStaging": true,
+										"stagingSettings": {
+											"linkedServiceName": {
+												"referenceName": "linkedService1_staging",
+												"type": "LinkedServiceReference"
+											},
+											"path": "crypto"
+										},
+										"parallelCopies": 1,
+										"logSettings": {
+											"enableCopyActivityLog": true,
+											"copyActivityLogSettings": {
+												"logLevel": "Info",
+												"enableReliableLogging": false
+											},
+											"logLocationSettings": {
+												"linkedServiceName": {
+													"referenceName": "AzureDataLakeStorage1",
+													"type": "LinkedServiceReference"
+												},
+												"path": "newcontainer"
+											}
+										}
 									},
 									"inputs": [
 										{
@@ -587,7 +628,76 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DelimitedText2')]",
-				"[concat(variables('factoryId'), '/datasets/AzureSqlTable3')]"
+				"[concat(variables('factoryId'), '/datasets/AzureSqlTable3')]",
+				"[concat(variables('factoryId'), '/linkedServices/linkedService1_staging')]",
+				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipline2')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy data1",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "AzureBlobFSReadSettings",
+									"maxConcurrentConnections": 3,
+									"recursive": false,
+									"wildcardFileName": "*",
+									"enablePartitionDiscovery": true
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false
+							},
+							"enableStaging": false,
+							"enableSkipIncompatibleRow": true
+						},
+						"inputs": [
+							{
+								"referenceName": "DelimitedText2",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "AzureSqlTable1",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/DelimitedText2')]",
+				"[concat(variables('factoryId'), '/datasets/AzureSqlTable1')]"
 			]
 		},
 		{
