@@ -335,7 +335,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
-						"fileName": "overseas-trade-indexes-June-2022-quarter-provisional-csv.csv",
+						"folderPath": "international-trade-june-2022-quarter-csv",
 						"fileSystem": "newcontainer"
 					},
 					"columnDelimiter": ",",
@@ -455,13 +455,13 @@
 						"userProperties": [],
 						"typeProperties": {
 							"dataset": {
-								"referenceName": "DelimitedText1",
+								"referenceName": "DelimitedText2",
 								"type": "DatasetReference",
 								"parameters": {}
 							},
 							"fieldList": [
-								"itemName",
-								"itemType"
+								"itemType",
+								"childItems"
 							],
 							"storeSettings": {
 								"type": "AzureBlobFSReadSettings",
@@ -475,6 +475,7 @@
 					},
 					{
 						"name": "ForEach1",
+						"description": "",
 						"type": "ForEach",
 						"dependsOn": [
 							{
@@ -487,7 +488,7 @@
 						"userProperties": [],
 						"typeProperties": {
 							"items": {
-								"value": "@array(activity('Get Metadata1').output.itemName)",
+								"value": "@activity('Get Metadata1').output.childItems",
 								"type": "Expression"
 							},
 							"isSequential": true,
@@ -529,7 +530,7 @@
 												"maxConcurrentConnections": 0,
 												"recursive": false,
 												"wildcardFileName": {
-													"value": "@item()",
+													"value": "@item().name",
 													"type": "Expression"
 												},
 												"enablePartitionDiscovery": false
@@ -550,7 +551,7 @@
 									},
 									"inputs": [
 										{
-											"referenceName": "DelimitedText1",
+											"referenceName": "DelimitedText2",
 											"type": "DatasetReference",
 											"parameters": {}
 										}
@@ -561,7 +562,7 @@
 											"type": "DatasetReference",
 											"parameters": {
 												"tbname": {
-													"value": "@item()",
+													"value": "@item().name",
 													"type": "Expression"
 												}
 											}
@@ -585,7 +586,7 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/DelimitedText1')]",
+				"[concat(variables('factoryId'), '/datasets/DelimitedText2')]",
 				"[concat(variables('factoryId'), '/datasets/AzureSqlTable3')]"
 			]
 		},
