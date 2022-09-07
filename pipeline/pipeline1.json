@@ -47,7 +47,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Get Metadata1').output.itemName",
+						"value": "@array(activity('Get Metadata1').output.itemName)",
 						"type": "Expression"
 					},
 					"isSequential": true,
@@ -88,6 +88,10 @@
 										"type": "AzureBlobFSReadSettings",
 										"maxConcurrentConnections": 0,
 										"recursive": false,
+										"wildcardFileName": {
+											"value": "@item()",
+											"type": "Expression"
+										},
 										"enablePartitionDiscovery": false
 									},
 									"formatSettings": {
@@ -116,7 +120,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"tbname": {
-											"value": "@activity('Get Metadata1').output.itemName",
+											"value": "@item()",
 											"type": "Expression"
 										}
 									}
