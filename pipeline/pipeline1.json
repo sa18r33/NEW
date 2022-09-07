@@ -91,8 +91,7 @@
 						"type": "DatasetReference"
 					},
 					"fieldList": [
-						"itemType",
-						"childItems"
+						"itemType"
 					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
@@ -102,6 +101,27 @@
 					"formatSettings": {
 						"type": "DelimitedTextReadSettings"
 					}
+				}
+			},
+			{
+				"name": "ForEach1",
+				"description": "",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Get Metadata1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@",
+						"type": "Expression"
+					},
+					"isSequential": true
 				}
 			}
 		],
