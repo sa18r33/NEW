@@ -14,8 +14,6 @@
 				"fileSystem": "newcontainer"
 			},
 			"columnDelimiter": ",",
-			"compressionCodec": "ZipDeflate",
-			"compressionLevel": "Fastest",
 			"escapeChar": "\\",
 			"quoteChar": "\""
 		},
