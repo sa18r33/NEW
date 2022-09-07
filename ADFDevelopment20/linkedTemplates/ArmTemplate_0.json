@@ -550,8 +550,7 @@
 													"value": "@item().name",
 													"type": "Expression"
 												},
-												"enablePartitionDiscovery": true,
-												"partitionRootPath": "crypto/partion"
+												"enablePartitionDiscovery": false
 											},
 											"formatSettings": {
 												"type": "DelimitedTextReadSettings"
