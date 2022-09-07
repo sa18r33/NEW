@@ -17,49 +17,12 @@
 			"compressionCodec": "ZipDeflate",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
+			"nullValue": {
+				"value": "6",
+				"type": "Expression"
+			},
 			"quoteChar": "\""
 		},
-		"schema": [
-			{
-				"name": "Prop_0",
-				"type": "String"
-			},
-			{
-				"name": "Date",
-				"type": "String"
-			},
-			{
-				"name": "Adj Close (BNB)",
-				"type": "String"
-			},
-			{
-				"name": "Volume (BNB)",
-				"type": "String"
-			},
-			{
-				"name": "Adj Close (BTC)",
-				"type": "String"
-			},
-			{
-				"name": "Volume (BTC)",
-				"type": "String"
-			},
-			{
-				"name": "Adj Close (USDT)",
-				"type": "String"
-			},
-			{
-				"name": "Volume (USDT)",
-				"type": "String"
-			},
-			{
-				"name": "Adj Close (ETH)",
-				"type": "String"
-			},
-			{
-				"name": "Volume (ETH)",
-				"type": "String"
-			}
-		]
+		"schema": []
 	}
 }
