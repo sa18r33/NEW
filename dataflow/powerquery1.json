@@ -6,7 +6,7 @@
 			"sources": [
 				{
 					"name": "DelimitedText1",
-					"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~>  DelimitedText1",
+					"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> DelimitedText1",
 					"dataset": {
 						"referenceName": "DelimitedText1",
 						"type": "DatasetReference"
@@ -14,14 +14,14 @@
 				},
 				{
 					"name": "DelimitedText2",
-					"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~>  DelimitedText2",
+					"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> DelimitedText2",
 					"dataset": {
 						"referenceName": "DelimitedText2",
 						"type": "DatasetReference"
 					}
 				}
 			],
-			"script": "section Section1;\r\nshared DelimitedText1 = let AdfDoc = AzureStorage.DataLakeContents(\"https://stagelevel.dfs.core.windows.net/newcontainer/cryptoprices.csv\"),Csv = Csv.Document(AdfDoc, [Delimiter = \",\", Encoding = TextEncoding.Utf8, QuoteStyle = QuoteStyle.Csv]), PromotedHeaders = Table.PromoteHeaders(Csv, [PromoteAllScalars = true]) in  PromotedHeaders;\r\nshared DelimitedText2 = let AdfDoc = AzureStorage.DataLakeContents(\"https://stagelevel.dfs.core.windows.net/newcontainer/overseas-trade-indexes-June-2022-quarter-provisional-csv.csv\"),Csv = Csv.Document(AdfDoc, [Delimiter = \",\", Encoding = TextEncoding.Utf8, QuoteStyle = QuoteStyle.Csv]) in Csv;\r\nshared UserQuery = let Source = #\"DelimitedText1\" in Source;\r\n[FunctionQueryBinding = \"{\"\"exemplarFormulaName\"\":\"\"UserQuery\"\"}\"]\r\nshared #\"m  ,\" = () => let Source = #\"DelimitedText1\" in Source;\r\n",
+			"script": "section Section1;\r\nshared DelimitedText1 = let AdfDoc = AzureStorage.DataLakeContents(\"https://stagelevel.dfs.core.windows.net/newcontainer/cryptoprices.csv\"),Csv = Csv.Document(AdfDoc, [Delimiter = \",\", Encoding = TextEncoding.Utf8, QuoteStyle = QuoteStyle.Csv]), PromotedHeaders = Table.PromoteHeaders(Csv, [PromoteAllScalars = true]) in  PromotedHeaders;\r\nshared DelimitedText2 = let AdfDoc = AzureStorage.DataLakeContents(\"https://stagelevel.dfs.core.windows.net/newcontainer/overseas-trade-indexes-June-2022-quarter-provisional-csv.csv\"),Csv = Csv.Document(AdfDoc, [Delimiter = \",\", Encoding = TextEncoding.Utf8, QuoteStyle = QuoteStyle.Csv]) in Csv;\r\nshared UserQuery = let Source = #\"DelimitedText1\" in Source;\r\n",
 			"documentLocale": "en-us"
 		}
 	}
