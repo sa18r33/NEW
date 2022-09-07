@@ -42,9 +42,8 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"preCopyScript": "create table precopytb(id int,name int)",
 						"writeBehavior": "insert",
-						"sqlWriterUseTableLock": true,
+						"sqlWriterUseTableLock": false,
 						"tableOption": "autoCreate",
 						"disableMetricsCollection": false
 					},
