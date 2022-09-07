@@ -88,7 +88,7 @@
 									"storeSettings": {
 										"type": "AzureBlobFSReadSettings",
 										"maxConcurrentConnections": 0,
-										"recursive": false,
+										"recursive": true,
 										"wildcardFileName": {
 											"value": "@item().name",
 											"type": "Expression"
@@ -96,10 +96,7 @@
 										"enablePartitionDiscovery": false
 									},
 									"formatSettings": {
-										"type": "DelimitedTextReadSettings",
-										"compressionProperties": {
-											"type": "ZipDeflateReadSettings"
-										}
+										"type": "DelimitedTextReadSettings"
 									}
 								},
 								"sink": {
