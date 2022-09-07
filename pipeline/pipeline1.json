@@ -117,7 +117,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"tbname": {
-											"value": "@activity('Get Metadata1').output.itemName",
+											"value": "@item()",
 											"type": "Expression"
 										}
 									}
