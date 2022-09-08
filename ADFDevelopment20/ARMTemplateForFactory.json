@@ -321,6 +321,92 @@
 							"enableStaging": false,
 							"translator": {
 								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "p1",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "prop_0",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "p2",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "prop_1",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "p3",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "prop_2",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "p4",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "prop_3",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "p5",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "piplineid",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "p6",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "datenow",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "p7",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "filename",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									}
+								],
 								"typeConversion": true,
 								"typeConversionSettings": {
 									"allowDataTruncation": true,
