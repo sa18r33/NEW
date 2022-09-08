@@ -114,29 +114,6 @@
 				]
 			}
 		],
-		"variables": {
-			"@p1": {
-				"type": "String"
-			},
-			"@p2": {
-				"type": "String"
-			},
-			"@p3": {
-				"type": "String"
-			},
-			"@p4": {
-				"type": "String"
-			},
-			"@p5": {
-				"type": "String"
-			},
-			"@p6": {
-				"type": "String"
-			},
-			"@p7": {
-				"type": "String"
-			}
-		},
 		"annotations": []
 	}
 }
