@@ -348,29 +348,6 @@
 					"elapsedTimeMetric": {},
 					"cancelAfter": {}
 				},
-				"variables": {
-					"@p1": {
-						"type": "String"
-					},
-					"@p2": {
-						"type": "String"
-					},
-					"@p3": {
-						"type": "String"
-					},
-					"@p4": {
-						"type": "String"
-					},
-					"@p5": {
-						"type": "String"
-					},
-					"@p6": {
-						"type": "String"
-					},
-					"@p7": {
-						"type": "String"
-					}
-				},
 				"annotations": []
 			},
 			"dependsOn": [
@@ -640,6 +617,63 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/DelimitedText3sp_file')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "need - Copy.csv",
+						"container": "newcontainer"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "p1",
+						"type": "String"
+					},
+					{
+						"name": "p2",
+						"type": "String"
+					},
+					{
+						"name": "p3",
+						"type": "String"
+					},
+					{
+						"name": "p4",
+						"type": "String"
+					},
+					{
+						"name": "p5",
+						"type": "String"
+					},
+					{
+						"name": "p6",
+						"type": "String"
+					},
+					{
+						"name": "p7",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/Json1')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -819,63 +853,6 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DelimitedText1')]",
 				"[concat(variables('factoryId'), '/datasets/DelimitedText2')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DelimitedText3sp_file')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobStorage1",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "need - Copy.csv",
-						"container": "newcontainer"
-					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": [
-					{
-						"name": "p1",
-						"type": "String"
-					},
-					{
-						"name": "p2",
-						"type": "String"
-					},
-					{
-						"name": "p3",
-						"type": "String"
-					},
-					{
-						"name": "p4",
-						"type": "String"
-					},
-					{
-						"name": "p5",
-						"type": "String"
-					},
-					{
-						"name": "p6",
-						"type": "String"
-					},
-					{
-						"name": "p7",
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
 			]
 		}
 	]
