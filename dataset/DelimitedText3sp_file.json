@@ -1,0 +1,52 @@
+{
+	"name": "DelimitedText3sp_file",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "need - Copy.csv",
+				"container": "newcontainer"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "p1",
+				"type": "String"
+			},
+			{
+				"name": "p2",
+				"type": "String"
+			},
+			{
+				"name": "p3",
+				"type": "String"
+			},
+			{
+				"name": "p4",
+				"type": "String"
+			},
+			{
+				"name": "p5",
+				"type": "String"
+			},
+			{
+				"name": "p6",
+				"type": "String"
+			},
+			{
+				"name": "p7",
+				"type": "String"
+			}
+		]
+	}
+}

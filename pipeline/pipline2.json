@@ -3,6 +3,63 @@
 	"properties": {
 		"activities": [
 			{
+				"name": "Stored procedure1",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Copy data1",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[sp_goods_classification]",
+					"storedProcedureParameters": {
+						"p1": {
+							"value": "",
+							"type": "Int32"
+						},
+						"p2": {
+							"value": "",
+							"type": "Int32"
+						},
+						"p3": {
+							"value": "",
+							"type": "String"
+						},
+						"p4": {
+							"value": "",
+							"type": "String"
+						},
+						"p5": {
+							"value": "",
+							"type": "String"
+						},
+						"p6": {
+							"value": "",
+							"type": "String"
+						},
+						"p7": {
+							"value": "",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase2",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
 				"name": "Copy data1",
 				"type": "Copy",
 				"dependsOn": [],
@@ -18,11 +75,9 @@
 					"source": {
 						"type": "DelimitedTextSource",
 						"storeSettings": {
-							"type": "AzureBlobFSReadSettings",
-							"maxConcurrentConnections": 3,
+							"type": "AzureBlobStorageReadSettings",
 							"recursive": false,
-							"wildcardFileName": "*",
-							"enablePartitionDiscovery": true
+							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
 							"type": "DelimitedTextReadSettings"
@@ -30,26 +85,58 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"writeBehavior": "insert",
-						"sqlWriterUseTableLock": false
+						"sqlWriterStoredProcedureName": "[dbo].[sp_ap]",
+						"sqlWriterTableType": "a1a",
+						"storedProcedureTableTypeParameterName": "s1",
+						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
-					"enableSkipIncompatibleRow": true
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
 				},
 				"inputs": [
 					{
-						"referenceName": "DelimitedText2",
+						"referenceName": "DelimitedText3sp_file",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "AzureSqlTable1",
+						"referenceName": "AzureSqlTable2",
 						"type": "DatasetReference"
 					}
 				]
 			}
 		],
+		"variables": {
+			"@p1": {
+				"type": "String"
+			},
+			"@p2": {
+				"type": "String"
+			},
+			"@p3": {
+				"type": "String"
+			},
+			"@p4": {
+				"type": "String"
+			},
+			"@p5": {
+				"type": "String"
+			},
+			"@p6": {
+				"type": "String"
+			},
+			"@p7": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
